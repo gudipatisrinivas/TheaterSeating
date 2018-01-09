@@ -34,7 +34,7 @@ Johnson 3
 Williams 4
 Brown 8
 Miller 12
-```
+done
 
 Your program must produce results to standard output in the same order as the requests, with the name of the person who requested the ticket and either the row and section of the ticket or the explanations "Sorry, we can't handle your party" or "Call to split party."
 
