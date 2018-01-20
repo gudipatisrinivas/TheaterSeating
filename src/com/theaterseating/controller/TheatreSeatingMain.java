@@ -7,7 +7,7 @@
 * @version 1.0
 * @since   2017-08-01 
 */
-package com.theaterseating.controllerller;
+package com.theaterseating.controller;
 
 import java.util.List;
 import java.util.Scanner;
@@ -21,7 +21,7 @@ public class TheatreSeatingMain {
 
 	public static void main(String[] args) {
 
-		String line = null;
+		String line = "";
 		StringBuilder layout = new StringBuilder();
 		StringBuilder ticketRequests = new StringBuilder();
 		boolean isLayoutFinished = false;
