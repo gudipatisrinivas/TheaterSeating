@@ -1,9 +1,15 @@
 ## How we evaluate your code
-We will be looking at a number of things including the design aspect of your solution and your object oriented programming skills. Whilst these are small problems, we expect you to submit what you believe is “production-quality” code that you would be able to run, maintain and evolve. You do not need to “gold plate” your solution, but we are looking for something more than a bare-bones algorithm. You should submit code that you would be happy to produce in a real project, or that you would be happy to receive from a colleague. We prefer code submissions that exhibit loose coupling, a high degree of encapsulation with cyclomatic complexity distributed relatively evenly. A quick `README` explaining how to run your program will no doubt help.
+We will be looking at a number of things including the design aspect of your solution and your object oriented programming skills. 
+Whilst these are small problems, we expect you to submit what you believe is “production-quality” code that you would be able to run, maintain and evolve. 
+You do not need to “gold plate” your solution, but we are looking for something more than a bare-bones algorithm.
+ You should submit code that you would be happy to produce in a real project, or that you would be happy to receive from a colleague. 
+ We prefer code submissions that exhibit loose coupling, a high degree of encapsulation with cyclomatic complexity distributed relatively evenly.
+  A quick `README` explaining how to run your program will no doubt help.
 
 ### Problem 3: Theatre Seating
 
-You run a small theater and each month, you have patrons mail in requests for pre-sale tickets.  You need to process these ticket requests and either tell them where their party will sit or explain to the patron why you can't complete their order.
+You run a small theater and each month, you have patrons mail in requests for pre-sale tickets. 
+ You need to process these ticket requests and either tell them where their party will sit or explain to the patron why you can't complete their order.
 
 You have a few rules that you need to follow when you fill the orders:
 1.	Fill as many orders as possible
