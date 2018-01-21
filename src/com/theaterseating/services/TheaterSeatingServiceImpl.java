@@ -281,7 +281,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 			}
 
 			/*
-			 * -1 is an indicator when we need to split the party.
+			 * Set the statius to CALLTO SPLIT is an indicator when we need to split the party.
 			 */
 			if (!request.getStatus().equals(UserStatus.COMPLETE.toString())) {
 
@@ -307,8 +307,6 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 		TheaterLayout theaterLayout = this.getTheaterLayout(theaterMap);
 
 		List<TheaterSeatingRequest> seating = this.getTicketRequests(requestName);
-		System.out.println("theaterLayout" + theaterLayout);
-		System.out.println("seating" + seating);
 		this.processTicketRequests(theaterLayout, seating);
 		return seating;
 
