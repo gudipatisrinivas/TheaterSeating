@@ -306,7 +306,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 	}
 
 	@Override
-	public void processAllTicketRequests(Map<Integer, List<Integer>> theaterMap,
+	public List<TheaterSeatingRequest> processAllTicketRequests(Map<Integer, List<Integer>> theaterMap,
 			Map<Integer, Map<String, Integer>> requestName) {
 		TheaterLayout theaterLayout = this.getTheaterLayout(theaterMap);
 
@@ -314,6 +314,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 		System.out.println("theaterLayout" + theaterLayout);
 		System.out.println("seating" + seating);
 		this.processTicketRequests(theaterLayout, seating);
+		return seating;
 
 	}
 

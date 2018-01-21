@@ -15,6 +15,6 @@ public interface TheaterSeatingService {
     
     void processTicketRequests(TheaterLayout layout, List<TheaterSeatingRequest> requests);
 
-	void processAllTicketRequests(Map<Integer, List<Integer>> theaterMap,Map<Integer, Map<String, Integer>> requestName);
+    List<TheaterSeatingRequest> processAllTicketRequests(Map<Integer, List<Integer>> theaterMap,Map<Integer, Map<String, Integer>> requestName);
 
 }
