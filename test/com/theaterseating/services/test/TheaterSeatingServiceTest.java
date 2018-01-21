@@ -1,7 +1,8 @@
 package com.theaterseating.services.test;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Map;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.theaterseating.bo.TheaterSeatingRequest;
 import com.theaterseating.services.TheaterSeatingService;
 import com.theaterseating.services.TheaterSeatingServiceImpl;
 
@@ -26,6 +28,8 @@ public class TheaterSeatingServiceTest {
 	public void processAllTicketRequestsTest() {
 	
 		Map<Integer, List<Integer>> theaterSeatingMap = new LinkedHashMap<>();
+
+		List<String> responseName = new LinkedList<>();
 
 		List<Integer> theaterSection1 = new LinkedList();
 		theaterSection1.addAll(Arrays.asList(6, 6));
@@ -76,9 +80,25 @@ public class TheaterSeatingServiceTest {
 
 		requestDetails.put(6, request6);
 
-		theaterSeatingService.processAllTicketRequests(theaterSeatingMap, requestDetails);
-		
-		
+		List<TheaterSeatingRequest> seating=theaterSeatingService.processAllTicketRequests(theaterSeatingMap, requestDetails);
+		System.out.println("Seats Distribution.\n");
+
+		for (TheaterSeatingRequest request : seating) {
+			responseName.add(request.getName());
+
+			
+
+		}
+		assertEquals(responseName.contains("Smith"), true);
+
+		assertEquals(responseName.contains("Jones"), true);
+
+
+		assertEquals(responseName.contains("Davis"), true);
+
+		assertEquals(responseName.contains("Wilson"), true);
+		assertEquals(responseName.contains("Brown"), true);		
+		assertEquals(responseName.contains("Srinivas"), true);		
 		
 		
 	}
