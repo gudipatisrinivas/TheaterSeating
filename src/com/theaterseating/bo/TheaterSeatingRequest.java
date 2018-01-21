@@ -6,17 +6,23 @@
 * @version 1.0
 * @since   2017-08-01 
 */
-package com.theaterseating.BO;
+package com.theaterseating.bo;
 
 public class TheaterSeatingRequest {
 
     private String name;
     private int noOfTickets;
-    private boolean isCompleted;
+    private String status;
     private int rowNumber;
     private int sectionNumber;
 
-    public String getName() {
+    
+    
+   public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getName() {
         return name;
     }
 
@@ -32,13 +38,7 @@ public class TheaterSeatingRequest {
         this.noOfTickets = noOfTickets;
     }
 
-    public boolean isCompleted() {
-        return isCompleted;
-    }
 
-    public void setCompleted(boolean isCompleted) {
-        this.isCompleted = isCompleted;
-    }
     
     public int getRowNumber() {
         return rowNumber;
@@ -56,29 +56,32 @@ public class TheaterSeatingRequest {
         this.sectionNumber = sectionNumber;
     }
     
-    public String getStatus(){
-        
-        String status = null;
-        
-        if(isCompleted){
-            
-            status = name + " " + "Row " + rowNumber + " " + "Section " + sectionNumber;
-            
-        }else{
-            
-            if(rowNumber == -1 && sectionNumber == -1){
-                
-                status = name + " " + "Call to split party.";
-                
-            }else{
-                
-                status = name + " " + "Sorry, we can't handle your party.";
-                
-            }
-            
-        }
-        
-        return status;
-    }
+    public enum UserStatus {
+        COMPLETE,
+        INCOMPLETE,
+        CANNOTHANDLE,
+        CALLTOSPLIT
+     }
+    
+	public String getStatus() {
+
+		String status = null;
+
+		if (status.equals(UserStatus.COMPLETE)) {
+
+			status = name + " " + "Row " + rowNumber + " " + "Section " + sectionNumber;
+
+		} else if (status.equals(UserStatus.CALLTOSPLIT)) {
+
+			status = name + " " + "Call to split party.";
+
+		} else if (status.equals(UserStatus.CANNOTHANDLE)) {
+
+			status = name + " " + "Sorry, we can't handle your party.";
+
+		}
+
+		return status;
+	}
 
 }

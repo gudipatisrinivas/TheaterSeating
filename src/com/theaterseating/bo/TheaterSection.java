@@ -7,7 +7,7 @@
 * @version 1.0
 * @since   2017-08-01 
 */
-package com.theaterseating.BO;
+package com.theaterseating.bo;
 
 public class TheaterSection implements Comparable<TheaterSection>{
 
@@ -15,6 +15,7 @@ public class TheaterSection implements Comparable<TheaterSection>{
     private int sectionNumber;
     private int capacity;
     private int availableSeats;
+    
 
     public int getRowNumber() {
         return rowNumber;

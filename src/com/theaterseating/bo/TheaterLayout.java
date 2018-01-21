@@ -7,9 +7,11 @@
 * @since   2017-08-01 
 */
 
-package com.theaterseating.BO;
+package com.theaterseating.bo;
 
 import java.util.List;
+
+import com.theaterseating.bo.TheaterSection;
 
 public class TheaterLayout {
 
@@ -40,5 +42,15 @@ public class TheaterLayout {
     public void setSections(List<TheaterSection> sections) {
         this.sections = sections;
     }
+    
+  
+
+	@Override
+	public String toString() {
+		return "TheaterLayout [totalCapacity=" + totalCapacity + ", availableSeats=" + availableSeats + ", sections="
+				+ sections + "]";
+	}
+    
+    
     
 }
