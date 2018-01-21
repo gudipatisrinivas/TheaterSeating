@@ -171,9 +171,9 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 		return sectionNo;
 	}
 
-	/*
+	/**
 	 * 
-	 * Request Processing in nut-shell
+	 * Request Processing 
 	 * 
 	 * 1) Iterate over all ticket requests 2) For each request,
 	 * 
@@ -181,8 +181,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 	 * handle the party'. - iterate over all theater sections starting from first
 	 * row
 	 * 
-	 * - If requested tickets and section's available seats match EXACTLY then
-	 * assign it.
+	 * 
 	 * 
 	 * - If requested tickets < section's available seats - Find complement request,
 	 * if any (complement request = section's available seats - original requested
@@ -203,9 +202,6 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 			TheaterSeatingRequest request = requests.get(i);
 			if(request.getStatus().equals(UserStatus.COMPLETE))   continue;
 
-			/*
-			 * -2 is an indicator when we can't handle the party.
-			 */
 			if (request.getNoOfTickets() > layout.getAvailableSeats()) {
 
 				 request.setStatus(UserStatus.CANNOTHANDLE.toString());
