@@ -1,6 +1,5 @@
 package com.theaterseating.services;
 
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -10,12 +9,12 @@ import com.theaterseating.bo.TheaterSeatingRequest;
 
 public interface TheaterSeatingService {
     
-    TheaterLayout getTheaterLayout(Map<Integer, LinkedList<Integer>> layOut);
+    TheaterLayout getTheaterLayout(Map<Integer, List<Integer>> layOut);
     
-    List<TheaterSeatingRequest> getTicketRequests(Map<Integer, LinkedHashMap<String, Integer>> ticketRequest);
+    List<TheaterSeatingRequest> getTicketRequests(Map<Integer, Map<String, Integer>> ticketRequest);
     
     void processTicketRequests(TheaterLayout layout, List<TheaterSeatingRequest> requests);
 
-	void processAllTicketRequests(Map<Integer, LinkedList<Integer>> theaterMap,Map<Integer, LinkedHashMap<String, Integer>> requestName);
+	void processAllTicketRequests(Map<Integer, List<Integer>> theaterMap,Map<Integer, Map<String, Integer>> requestName);
 
 }

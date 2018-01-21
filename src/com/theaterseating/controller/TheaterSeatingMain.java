@@ -11,6 +11,7 @@ package com.theaterseating.controller;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -22,8 +23,8 @@ public class TheaterSeatingMain {
 	public static void main(String[] args) {
 
 		boolean isDone = false;
-		Map<Integer, LinkedList<Integer>> theaterMap = new LinkedHashMap<Integer, LinkedList<Integer>>();
-		Map<Integer, LinkedHashMap<String, Integer>> requestName = new LinkedHashMap<Integer, LinkedHashMap<String, Integer>>();
+		Map<Integer, List<Integer>> theaterMap = new LinkedHashMap<Integer, List<Integer>>();
+		Map<Integer, Map<String, Integer>> requestName = new LinkedHashMap<Integer, Map<String, Integer>>();
 		while (!isDone) {
 
 			System.out.println("Welcome to the Theater Layout");

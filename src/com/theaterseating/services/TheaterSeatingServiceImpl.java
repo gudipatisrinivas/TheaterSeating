@@ -34,16 +34,16 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 	 */
 
 	@Override
-	public TheaterLayout getTheaterLayout(Map<Integer, LinkedList<Integer>> theaterMap) throws NumberFormatException {
+	public TheaterLayout getTheaterLayout(Map<Integer, List<Integer>> theaterMap) throws NumberFormatException {
 
 		int totalCapacity = 0;
 		TheaterLayout theaterLayout = new TheaterLayout();
 		List<TheaterSection> sectionsList = new ArrayList<TheaterSection>();
 
-		for (Entry<Integer, LinkedList<Integer>> entry : theaterMap.entrySet()) {
+		for (Entry<Integer, List<Integer>> entry : theaterMap.entrySet()) {
 			int counter = 1;
 
-			LinkedList<Integer> sectionCapacity = entry.getValue();
+			LinkedList<Integer> sectionCapacity = (LinkedList<Integer>) entry.getValue();
 			Iterator<Integer> itr = sectionCapacity.iterator();
 			while (itr.hasNext()) {
 				int capacity = itr.next();
@@ -68,15 +68,15 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 
 
 	@Override
-	public List<TheaterSeatingRequest> getTicketRequests(Map<Integer, LinkedHashMap<String, Integer>> requestName)
+	public List<TheaterSeatingRequest> getTicketRequests(Map<Integer, Map<String, Integer>> requestName)
 			throws NumberFormatException {
 
 		List<TheaterSeatingRequest> requestsList = new LinkedList<TheaterSeatingRequest>();
 
-		for (Entry<Integer, LinkedHashMap<String, Integer>> entry : requestName.entrySet()) {
+		for (Entry<Integer, Map<String, Integer>> entry : requestName.entrySet()) {
 
 			TheaterSeatingRequest request = new TheaterSeatingRequest();
-			LinkedHashMap<String, Integer> requestMap = entry.getValue();
+			LinkedHashMap<String, Integer> requestMap = (LinkedHashMap<String, Integer>) entry.getValue();
 
 			request.setName(requestMap.keySet().iterator().next());
 			 request.setStatus(UserStatus.COMPLETE.toString());
@@ -306,8 +306,8 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 	}
 
 	@Override
-	public void processAllTicketRequests(Map<Integer, LinkedList<Integer>> theaterMap,
-			Map<Integer, LinkedHashMap<String, Integer>> requestName) {
+	public void processAllTicketRequests(Map<Integer, List<Integer>> theaterMap,
+			Map<Integer, Map<String, Integer>> requestName) {
 		TheaterLayout theaterLayout = this.getTheaterLayout(theaterMap);
 
 		List<TheaterSeatingRequest> seating = this.getTicketRequests(requestName);
