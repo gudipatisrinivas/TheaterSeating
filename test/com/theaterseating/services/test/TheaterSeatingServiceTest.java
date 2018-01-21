@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -19,8 +20,8 @@ public class TheaterSeatingServiceTest {
 	
 	TheaterSeatingService theaterSeatingService;
 	
-	@BeforeClass
-	public void intiate() {
+	@Before
+	public  void intiate() {
 		theaterSeatingService=new TheaterSeatingServiceImpl();
 	}
 	

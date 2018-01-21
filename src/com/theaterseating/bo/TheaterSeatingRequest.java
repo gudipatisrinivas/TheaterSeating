@@ -12,15 +12,21 @@ public class TheaterSeatingRequest {
 
     private String name;
     private int noOfTickets;
-    private String status;
     private int rowNumber;
     private int sectionNumber;
+    private String status;
+    
+    
 
-    
-    
-   public void setStatus(String status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+	
+	
 
 	public String getName() {
         return name;
@@ -56,32 +62,51 @@ public class TheaterSeatingRequest {
         this.sectionNumber = sectionNumber;
     }
     
-    public enum UserStatus {
-        COMPLETE,
-        INCOMPLETE,
-        CANNOTHANDLE,
-        CALLTOSPLIT
-     }
+  
     
-	public String getStatus() {
+    public enum UserStatus {
+    		COMPLETE("COMPLETE"),
+        INCOMPLETE("INCOMPLETE"),
+        CANNOTHANDLE("CANNOTHANDLE"),
+        CALLTOSPLIT("CALLTOSPLIT");
+    		
+    	private final String text;
+    	
+		private UserStatus(String text) {
+			this.text = text;
+		}
 
-		String status = null;
+       @Override
+        public String toString() {
+            return text;
+        }
+    }
+    
+	public String getUserStatus() {
 
-		if (status.equals(UserStatus.COMPLETE)) {
+		//String status = null;
+
+		if (status.equals(UserStatus.COMPLETE.toString())) {
 
 			status = name + " " + "Row " + rowNumber + " " + "Section " + sectionNumber;
 
-		} else if (status.equals(UserStatus.CALLTOSPLIT)) {
+		} else if (status.equals(UserStatus.CALLTOSPLIT.toString())) {
 
 			status = name + " " + "Call to split party.";
 
-		} else if (status.equals(UserStatus.CANNOTHANDLE)) {
+		} else if (status.equals(UserStatus.CANNOTHANDLE.toString())) {
 
 			status = name + " " + "Sorry, we can't handle your party.";
 
 		}
 
 		return status;
+	}
+
+	@Override
+	public String toString() {
+		return "TheaterSeatingRequest [name=" + name + ", noOfTickets=" + noOfTickets + ", rowNumber=" + rowNumber
+				+ ", sectionNumber=" + sectionNumber + "]";
 	}
 
 }

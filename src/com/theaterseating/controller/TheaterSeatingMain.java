@@ -23,8 +23,8 @@ public class TheaterSeatingMain {
 	public static void main(String[] args) {
 
 		boolean isDone = false;
-		Map<Integer, List<Integer>> theaterMap = new LinkedHashMap<Integer, List<Integer>>();
-		Map<Integer, Map<String, Integer>> requestName = new LinkedHashMap<Integer, Map<String, Integer>>();
+		Map<Integer, List<Integer>> theaterMap = new LinkedHashMap<>();
+		Map<Integer, Map<String, Integer>> requestName = new LinkedHashMap<>();
 		while (!isDone) {
 
 			System.out.println("Welcome to the Theater Layout");
@@ -35,7 +35,7 @@ public class TheaterSeatingMain {
 			for (int counterA = 1; counterA <= noOfRows; counterA++) {
 				System.out.println("Please enter the no of sections for the row\t" + counterA);
 				Integer noOfSection = Integer.parseInt(input.nextLine());
-				LinkedList<Integer> section = new LinkedList<Integer>();
+				LinkedList<Integer> section = new LinkedList<>();
 				for (int counterB = 1; counterB <= noOfSection; counterB++) {
 					System.out.println("Please enter the capacity for counter" + counterA + "the section\t" + counterB);
 					Integer sectionCapacity = Integer.parseInt(input.nextLine());
@@ -54,7 +54,7 @@ public class TheaterSeatingMain {
 				String nameOfTheRequest = input.nextLine();
 				System.out.println("Please enter the order of the request for the request");
 				Integer order = Integer.parseInt(input.nextLine());
-				LinkedHashMap<String, Integer> value = new LinkedHashMap<String, Integer>();
+				LinkedHashMap<String, Integer> value = new LinkedHashMap<>();
 				value.put(nameOfTheRequest, order);
 				requestName.put(i, value);
 			}

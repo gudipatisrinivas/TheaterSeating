@@ -38,7 +38,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 
 		int totalCapacity = 0;
 		TheaterLayout theaterLayout = new TheaterLayout();
-		List<TheaterSection> sectionsList = new ArrayList<TheaterSection>();
+		List<TheaterSection> sectionsList = new ArrayList<>();
 
 		for (Entry<Integer, List<Integer>> entry : theaterMap.entrySet()) {
 			int counter = 1;
@@ -52,6 +52,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 				section.setSectionNumber(counter);
 				section.setCapacity(capacity);
 				section.setAvailableSeats(capacity);
+
 				sectionsList.add(section);
 				totalCapacity = totalCapacity + capacity;
 				counter++;
@@ -65,13 +66,11 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 
 	}
 
-
-
 	@Override
 	public List<TheaterSeatingRequest> getTicketRequests(Map<Integer, Map<String, Integer>> requestName)
 			throws NumberFormatException {
 
-		List<TheaterSeatingRequest> requestsList = new LinkedList<TheaterSeatingRequest>();
+		List<TheaterSeatingRequest> requestsList = new LinkedList<>();
 
 		for (Entry<Integer, Map<String, Integer>> entry : requestName.entrySet()) {
 
@@ -79,7 +78,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 			LinkedHashMap<String, Integer> requestMap = (LinkedHashMap<String, Integer>) entry.getValue();
 
 			request.setName(requestMap.keySet().iterator().next());
-			 request.setStatus(UserStatus.COMPLETE.toString());
+			request.setStatus(UserStatus.INCOMPLETE.toString());
 			request.setNoOfTickets(requestMap.values().iterator().next());
 			request.setRowNumber(entry.getKey());
 
@@ -110,8 +109,9 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 
 			TheaterSeatingRequest request = requests.get(i);
 
-		   if(!request.getStatus().equals(UserStatus.COMPLETE) && request.getNoOfTickets() == complementSeats){
-         
+			if (!request.getStatus().equals(UserStatus.COMPLETE.toString())
+					&& request.getNoOfTickets() == complementSeats) {
+
 				requestNo = i;
 				break;
 
@@ -173,7 +173,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 
 	/**
 	 * 
-	 * Request Processing 
+	 * Request Processing
 	 * 
 	 * 1) Iterate over all ticket requests 2) For each request,
 	 * 
@@ -200,11 +200,12 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 		for (int i = 0; i < requests.size(); i++) {
 
 			TheaterSeatingRequest request = requests.get(i);
-			if(request.getStatus().equals(UserStatus.COMPLETE))   continue;
+			if (request.getStatus().equals(UserStatus.COMPLETE.toString()))
+				continue;
 
 			if (request.getNoOfTickets() > layout.getAvailableSeats()) {
 
-				 request.setStatus(UserStatus.CANNOTHANDLE.toString());
+				request.setStatus(UserStatus.CANNOTHANDLE.toString());
 				continue;
 
 			}
@@ -235,7 +236,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 						request.setSectionNumber(section.getSectionNumber());
 						section.setAvailableSeats(section.getAvailableSeats() - request.getNoOfTickets());
 						layout.setAvailableSeats(layout.getAvailableSeats() - request.getNoOfTickets());
-						 request.setStatus(UserStatus.COMPLETE.toString());
+						request.setStatus(UserStatus.COMPLETE.toString());
 
 						TheaterSeatingRequest complementRequest = requests.get(requestNo);
 
@@ -257,8 +258,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 
 							request.setRowNumber(perferctSection.getRowNumber());
 							request.setSectionNumber(perferctSection.getSectionNumber());
-							perferctSection
-									.setAvailableSeats(perferctSection.getAvailableSeats() - request.getNoOfTickets());
+							perferctSection.setAvailableSeats(perferctSection.getAvailableSeats() - request.getNoOfTickets());
 							layout.setAvailableSeats(layout.getAvailableSeats() - request.getNoOfTickets());
 							request.setStatus(UserStatus.COMPLETE.toString());
 							break;
@@ -269,7 +269,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 							request.setSectionNumber(section.getSectionNumber());
 							section.setAvailableSeats(section.getAvailableSeats() - request.getNoOfTickets());
 							layout.setAvailableSeats(layout.getAvailableSeats() - request.getNoOfTickets());
-							 request.setStatus(UserStatus.COMPLETE.toString());
+							request.setStatus(UserStatus.COMPLETE.toString());
 							break;
 
 						}
@@ -281,7 +281,8 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 			}
 
 			/*
-			 * Set the statius to CALLTO SPLIT is an indicator when we need to split the party.
+			 * Set the status to CALLTO SPLIT is an indicator when we need to split the
+			 * party.
 			 */
 			if (!request.getStatus().equals(UserStatus.COMPLETE.toString())) {
 
@@ -295,7 +296,7 @@ public class TheaterSeatingServiceImpl implements TheaterSeatingService {
 
 		for (TheaterSeatingRequest request : requests) {
 
-			System.out.println(request.getStatus());
+			System.out.println(request.getUserStatus());
 
 		}
 
