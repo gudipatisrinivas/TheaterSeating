@@ -7,6 +7,7 @@
 * @since   2017-08-01 
 */
 package com.theaterseating.bo;
+import java.util.*;
 
 public class TheaterSeatingRequest {
 
@@ -15,6 +16,7 @@ public class TheaterSeatingRequest {
     private int rowNumber;
     private int sectionNumber;
     private String status;
+    private List list;
     
     
 
